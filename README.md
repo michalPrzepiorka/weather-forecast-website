@@ -1,4 +1,7 @@
-# weather-forecast-web
+# Weather forecast app
+This app uses my own weather forecast api to fetch data from 
+https://pogoda.interia.pl/ to display them on my weather forecast 
+service.
 
 ## Project setup
 ```
