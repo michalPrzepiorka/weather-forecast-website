@@ -38,19 +38,19 @@
     </v-app-bar>
 
     <v-content>
-      <MichalTest/>
+      <Test/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import MichalTest from '@/components/MichalTest.vue';
+import Test from '@/components/Test.vue';
 
 export default {
   name: 'App',
 
   components: {
-    MichalTest,
+    Test,
   },
 
   data: () => ({
