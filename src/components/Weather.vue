@@ -1,12 +1,12 @@
 <template>
     <div>
-        Main page test
+        Weather goes here
     </div>
 </template>
 
 <script>
 export default {
-  name: 'Test',
+  name: 'Weather',
 };
 </script>
 
