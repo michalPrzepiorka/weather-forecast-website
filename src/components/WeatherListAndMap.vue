@@ -2,7 +2,12 @@
 <div class="row no-gutters">
     <div class="col-md-6 no-gutters">
         <div class="left-side d-flex">
-            LEFT TEST
+            <ul>
+                <li v-for="weatherForecast in weather" :key="weatherForecast.id">
+                    <p>{{ weatherForecast.city }}</p>
+                    <p>{{ weatherForecast.temperature }}</p>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="col-md-6 no-gutters">
@@ -19,9 +24,27 @@ export default {
   components: {
   },
 
-  data: () => ({
-    //
-  }),
+  data() {
+    return {
+      weather: [
+        {
+          id: 1,
+          city: 'Kraków',
+          temperature: '23',
+        },
+        {
+          id: 2,
+          city: 'Lublin',
+          temperature: '18',
+        },
+        {
+          id: 3,
+          city: 'Warszawa',
+          temperature: '16',
+        },
+      ],
+    };
+  },
 };
 </script>
 
@@ -37,11 +60,18 @@ export default {
         }
     }
     .left-side{
-        background: lightgrey;
+        background: white;
     }
 
     .right-side{
         background: grey;
+    }
+
+    .weatherForecast{
+        background: #eee;
+        padding: 20px;
+        margin-bottom: 10px;
+        list-style: none;
     }
 
 </style>
