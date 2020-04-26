@@ -13,7 +13,7 @@
             />
             <router-link class="menu-router" to="/weather">
                 <v-label class="menu-label">
-                    Pogoda
+                    <span id="nav-content">Pogoda</span>
                 </v-label>
             </router-link>
             <v-divider
@@ -22,7 +22,7 @@
             />
             <router-link class="menu-router" to="/stats">
                 <v-label class="menu-label">
-                    Wykresy
+                    <span id="nav-content">Wykresy</span>
                 </v-label>
             </router-link>
 
@@ -61,5 +61,10 @@ export default {
         padding-left: 20px;
         padding-right: 20px;
         text-decoration: none;
+    }
+    #nav-content{
+        font-size: 17px;
+        color: #4854FD;
+        font-family: Arial,serif;
     }
 </style>
