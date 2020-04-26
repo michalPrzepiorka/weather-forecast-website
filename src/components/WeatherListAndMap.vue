@@ -2,13 +2,14 @@
 <div class="row no-gutters">
     <div class="col-md-6 no-gutters">
         <div class="left-side d-flex">
-            <ul>
-                <li v-for="weatherForecast in weather" :key="weatherForecast.id">
-                    <label>
-                        <input v-model="weather" @input="fetchWeather"/>
-                    </label>
+            <Button class="primary" @click="fetchWeather">Update</Button>
+            <ul class="list-of-weather-items">
+                <label>
+                    <input v-model="weather" @input="fetchWeather"/>
+                </label>
+                <li v-for="item in results" :key="item.id">
+                    <p>{{item.cityName}} {{item.temperature}}</p>
                 </li>
-                <Button class="primary" @click="fetchWeather">Update</Button>
             </ul>
         </div>
     </div>
@@ -33,6 +34,7 @@ export default {
   data() {
     return {
       weather: '',
+      results: [],
     };
   },
   methods: {
@@ -43,7 +45,8 @@ export default {
             'Content-Type': 'applicatioon/json',
           },
         }).then((response) => {
-        console.log(response);
+        this.results = response.data;
+        console.log(response.data);
       })
         .catch((error) => {
           console.log(error);
@@ -72,8 +75,8 @@ export default {
         background: grey;
     }
 
-    .weatherForecast{
-        background: #eee;
+    .list-of-weather-items{
+        background: white;
         padding: 20px;
         margin-bottom: 10px;
         list-style: none;
