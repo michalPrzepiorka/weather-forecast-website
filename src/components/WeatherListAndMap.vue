@@ -4,9 +4,11 @@
         <div class="left-side d-flex">
             <ul>
                 <li v-for="weatherForecast in weather" :key="weatherForecast.id">
-                    <p>{{ weatherForecast.city }}</p>
-                    <p>{{ weatherForecast.temperature }}</p>
+                    <label>
+                        <input v-model="weather" @input="fetchWeather"/>
+                    </label>
                 </li>
+                <Button class="primary" @click="fetchWeather">Update</Button>
             </ul>
         </div>
     </div>
@@ -19,6 +21,10 @@
 </template>
 
 <script>
+import axios from 'axios';
+
+const API = 'http://localhost:8090';
+
 export default {
   name: 'App',
   components: {
@@ -26,24 +32,23 @@ export default {
 
   data() {
     return {
-      weather: [
-        {
-          id: 1,
-          city: 'Kraków',
-          temperature: '23',
-        },
-        {
-          id: 2,
-          city: 'Lublin',
-          temperature: '18',
-        },
-        {
-          id: 3,
-          city: 'Warszawa',
-          temperature: '16',
-        },
-      ],
+      weather: '',
     };
+  },
+  methods: {
+    fetchWeather() {
+      axios.get(`${API}/temp`,
+        {
+          headers: {
+            'Content-Type': 'applicatioon/json',
+          },
+        }).then((response) => {
+        console.log(response);
+      })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
