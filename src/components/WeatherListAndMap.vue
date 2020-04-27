@@ -2,11 +2,7 @@
 <div class="row no-gutters">
     <div class="col-md-6 no-gutters">
         <div class="left-side d-flex">
-            <Button class="primary" @click="fetchWeather">Update</Button>
             <ul class="list-of-weather-items">
-                <label>
-                    <input v-model="weather" @input="fetchWeather"/>
-                </label>
                 <li v-for="item in results" :key="item.id">
                     <p>{{item.cityName}} {{item.temperature}}</p>
                 </li>
@@ -36,6 +32,9 @@ export default {
       weather: '',
       results: [],
     };
+  },
+  created() {
+    this.fetchWeather();
   },
   methods: {
     fetchWeather() {
