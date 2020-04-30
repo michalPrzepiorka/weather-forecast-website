@@ -11,7 +11,7 @@
     </div>
     <div class="col-md-6 no-gutters">
         <div class="right-side d-flex">
-            RIGHT TEST
+            Map goes here
         </div>
     </div>
 </div>
@@ -45,7 +45,6 @@ export default {
           },
         }).then((response) => {
         this.results = response.data;
-        console.log(response.data);
       })
         .catch((error) => {
           console.log(error);
@@ -76,8 +75,7 @@ export default {
 
     .list-of-weather-items{
         background: white;
-        padding: 20px;
-        margin-bottom: 10px;
+        margin-top: 10px;
         list-style: none;
     }
 
