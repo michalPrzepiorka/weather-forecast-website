@@ -55,7 +55,12 @@ export default {
 </script>
 
 <style lang="scss">
-    .left-side, .right-side{
+    .left-side{
+        height: 50vh;
+        width: 100%;
+    }
+    .right-side{
+        position: fixed;
         height: 50vh;
         width: 100%;
     }
