@@ -2,16 +2,16 @@
 <div class="row no-gutters">
     <div class="col-md-6 no-gutters">
         <div class="left-side d-flex">
-            <ul class="list-of-weather-items">
-                <li v-for="item in results" :key="item.id">
-                    <p>{{item.cityName}} {{item.temperature}}</p>
-                </li>
-            </ul>
+            <virtual-list style="width: 100%;"
+            :data-key="'cityName'"
+            :data-sources="results"
+            :data-component="weather"
+            />
         </div>
     </div>
     <div class="col-md-6 no-gutters">
         <div class="right-side d-flex">
-            RIGHT TEST
+            Map goes here
         </div>
     </div>
 </div>
@@ -19,17 +19,20 @@
 
 <script>
 import axios from 'axios';
+import VirtualList from 'vue-virtual-scroll-list';
+import Weather from './Weather.vue';
 
 const API = 'http://localhost:8090';
 
 export default {
   name: 'App',
   components: {
+    'virtual-list': VirtualList,
   },
 
   data() {
     return {
-      weather: '',
+      weather: Weather,
       results: [],
     };
   },
@@ -45,7 +48,6 @@ export default {
           },
         }).then((response) => {
         this.results = response.data;
-        console.log(response.data);
       })
         .catch((error) => {
           console.log(error);
@@ -56,13 +58,18 @@ export default {
 </script>
 
 <style lang="scss">
-    .left-side, .right-side{
+    .left-side{
         height: 50vh;
+        width: 100%;
+    }
+    .right-side{
+        position: fixed;
+        height: 90vh;
         width: 100%;
     }
 
     @media screen and (min-width: 768px){
-        .left-side, .right-side{
+        .left-side {
             height: 100vh;
         }
     }
@@ -76,8 +83,7 @@ export default {
 
     .list-of-weather-items{
         background: white;
-        padding: 20px;
-        margin-bottom: 10px;
+        margin-top: 10px;
         list-style: none;
     }
 
