@@ -11,7 +11,7 @@
     </div>
     <div class="col-md-6 no-gutters">
         <div class="right-side d-flex">
-            Map goes here
+            <div id="windy"></div>
         </div>
     </div>
 </div>
@@ -59,32 +59,36 @@ export default {
 
 <style lang="scss">
     .left-side{
-        height: 50vh;
         width: 100%;
+        background: white;
     }
     .right-side{
         position: fixed;
         height: 90vh;
-        width: 100%;
+        width: 50%;
     }
 
-    @media screen and (min-width: 768px){
+    @media screen and (max-width: 1024px){
         .left-side {
-            height: 100vh;
+            // cos
+            height: 100%;
         }
-    }
-    .left-side{
-        background: white;
-    }
-
-    .right-side{
-        background: grey;
+        .right-side {
+            position: relative;
+            width: 100%;
+            height: 50vh;
+        }
     }
 
     .list-of-weather-items{
         background: white;
         margin-top: 10px;
         list-style: none;
+    }
+
+    #windy {
+        height: 100%;
+        width: 100%;
     }
 
 </style>
